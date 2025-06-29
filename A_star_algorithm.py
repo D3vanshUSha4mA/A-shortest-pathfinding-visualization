@@ -18,27 +18,27 @@ TURQUOISE = (64, 224, 208)
 
 
 
-class Spot:
+class Spot:                                                              #represents each cell in the grid......
     def __init__(self,row,col,width,total_rows):
-        self.row=row
+        self.row=row                                                     #grid coordinates....
         self.col=col
-        self.x=width*row
+        self.x=width*row                                                 #pixel coordinates for drawing.....  
         self.y=width*col
         self.color=WHITE
-        self.neighbours=[]
+        self.neighbours=[]                                               #list of valid(white) neighbours
         self.width=width
         self.total_rows=total_rows
     def get_pos(self):
         return self.row,self.col
-    def is_closed(self):
+    def is_closed(self):                    #already visited
         return self.color==RED
-    def is_open(self):
+    def is_open(self):                      #in the queue,not visited yet
         return self.color==GREEN
-    def is_barrier(self):
+    def is_barrier(self):                   #not walkable
         return self.color==BLACK
-    def is_start(self):
+    def is_start(self):                     #starting point
         return self.color==ORANGE
-    def is_end(self):
+    def is_end(self):                       #ending point
         return self.color==TURQUOISE
     def reset(self):
         self.color=WHITE
@@ -56,28 +56,28 @@ class Spot:
         self.color=PURPLE
     def draw(self,win):
         pygame.draw.rect(win,self.color,(self.x,self.y,self.width,self.width))
-    def update_neighbours(self,grid):
+    def update_neighbours(self,grid):                                  #resets the neighbours list.....ensures only valid ones go to the list...
         self.neighbours=[]
-        if self.row < self.total_rows -1 and not grid[self.row +1][self.col].is_barrier():
+        if self.row<self.total_rows-1 and not grid[self.row+1][self.col].is_barrier():
             self.neighbours.append(grid[self.row+1][self.col])
         
-        if self.row > 0  and not grid[self.row -1][self.col].is_barrier():
+        if self.row>0 and not grid[self.row-1][self.col].is_barrier():
             self.neighbours.append(grid[self.row-1][self.col])
         
-        if self.col < self.total_rows -1 and not grid[self.row][self.col+1].is_barrier():
+        if self.col<self.total_rows-1 and not grid[self.row][self.col+1].is_barrier():
             self.neighbours.append(grid[self.row][self.col+1])
         
-        if self.col > 0 and not grid[self.row][self.col-1].is_barrier():
+        if self.col>0 and not grid[self.row][self.col-1].is_barrier():
             self.neighbours.append(grid[self.row][self.col-1])
         
 
     def __lt__(self,other):
         return False
-def h(p1,p2):
+def h(p1,p2):                  #Heuristic function-Manhattan Distance....
     x1,y1=p1
     x2,y2=p2
     return abs(x1-x2)+abs(y1-y2)
-def reconstruct_path(came_from,current,draw):
+def reconstruct_path(came_from,current,draw):       #backtrack from the end node to the start node using came_from dictionary and colour the path purple
     while current in came_from:
         current=came_from[current]
         current.make_path()
@@ -86,37 +86,37 @@ def reconstruct_path(came_from,current,draw):
 
 
 def algorithm(draw,grid,start,end):
-    count=0
-    open_set=PriorityQueue()
-    open_set.put((0,count,start))
-    came_from={}
-    g_score={spot:float("inf") for row in grid for spot in row}
-    g_score[start]=0
-    f_score={spot:float("inf") for row in grid for spot in row}
+    count=0                                        #prevents error when f_score of two spots are same.....
+    open_set=PriorityQueue()                       #This queue holds the next nodes to be visited....it is sorted by (f_score,count) so lowest cost node is chosen...
+    open_set.put((0,count,start))                  #start node with f score as zero...
+    came_from={}                                   #dictionary to keep track of path...
+    g_score={spot:float("inf") for row in grid for spot in row}       #actual cost to reach a spot from the start...intially everything is unreachable(infinity)...
+    g_score[start]=0                                #cost to reach itself is zero....
+    f_score={spot:float("inf") for row in grid for spot in row}     #f_score=(g_score+heuristic)....
     f_score[start]=h(start.get_pos(),end.get_pos())
-    open_set_hash={start}
-    while not open_set.empty():
+    open_set_hash={start}                          #track what's currently inside open_set.....
+    while not open_set.empty():                    #as long as there are nodes lefto explore
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
                 pygame.quit()
-        current = open_set.get()[2]
-        open_set_hash.remove(current)
-        if current==end:
+        current = open_set.get()[2]               #picks the node with lowest f_score from priority queue...
+        open_set_hash.remove(current)             #removes it from the hash set...
+        if current==end:                          #if the end node is reached construct the path...
             reconstruct_path(came_from,end,draw)
             end.make_end()
             return True
-        for neighbour in current.neighbours:
-            temp_g_score=g_score[current]+1
-            if temp_g_score < g_score[neighbour]:
-                came_from[neighbour]=current
-                g_score[neighbour]=temp_g_score
-                f_score[neighbour]=temp_g_score+h(neighbour.get_pos(),end.get_pos())
-                if neighbour not in open_set_hash:
+        for neighbour in current.neighbours:       #explore neighbours
+            temp_g_score=g_score[current]+1        #cost to move to a neighbour
+            if temp_g_score < g_score[neighbour]:  #if better path
+                came_from[neighbour]=current       #update path
+                g_score[neighbour]=temp_g_score    #update cost
+                f_score[neighbour]=temp_g_score+h(neighbour.get_pos(),end.get_pos())    #f_score
+                if neighbour not in open_set_hash:  #if not is open_set already
                     count+=1
-                    open_set.put((f_score[neighbour],count,neighbour))
-                    open_set_hash.add(neighbour)
-                    neighbour.make_open()
-        draw()
+                    open_set.put((f_score[neighbour],count,neighbour)) #add to queue 
+                    open_set_hash.add(neighbour)                       #add to hash_set
+                    neighbour.make_open()                              #make it open
+        draw()                   
 
         if(current!=start):
             current.make_closed()
@@ -203,3 +203,4 @@ def main(win,width):
 
     pygame.quit()
 main(WIN,WIDTH)
+
