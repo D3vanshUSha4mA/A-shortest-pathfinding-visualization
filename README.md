@@ -16,7 +16,7 @@
 <br />
 <!-- UPDATE -->
 <div align="center">
-  <a href="https://github.com/cgs-iitkgp/PROJECT_NAME">
+  <a href="https://github.com/D3vanshUSha4mA/A-shortest-pathfinding-visualization">
      <img width="140" alt="image" src="">
   </a>
 
@@ -24,7 +24,7 @@
 
   <p align="center">
   <!-- UPDATE -->
-    <i>Project one liner slogan goes here</i>
+    <i>A_star_pathfinding_algorithm</i>
   </p>
 </div>
 
@@ -83,16 +83,12 @@ _Now that the environment has been set up and configured to properly compile and
 <!-- UPDATE -->
 1. Clone the repository
    ```sh
-   git clone https://github.com/cgs-iitkgp/PROJECT_NAME.git
+   git clone https://github.com/D3vanshUSha4mA/A-shortest-pathfinding-visualization.git
    ```
-2. Make the script executable
+
+2. Execute the script
    ```sh
-   cd ./PROJECT_NAME
-   chmod +x ./PROJECT_NAME
-   ```
-3. Execute the script
-   ```sh
-   ./PROJECT_NAME
+   ./main.exe
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
