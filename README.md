@@ -20,7 +20,7 @@
      <img width="140" alt="image" src="">
   </a>
 
-  <h3 align="center">PROJECT_NAME</h3>
+  <h3 align="center">AstarPathfinding</h3>
 
   <p align="center">
   <!-- UPDATE -->
@@ -55,7 +55,11 @@
   </a>
 </div>
 
-_Detailed explaination of the project goes here_
+Built a pathfinding system from scratch on a grid.
+Supports real time dynamic obstacles.
+It is implemented using python and pygame.
+A star algorithm is used for pathfinding….
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
