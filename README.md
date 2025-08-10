@@ -114,14 +114,14 @@ Use this space to show useful examples of how this project can be used. Addition
 The currently active maintainer(s) of this project.
 
 <!-- UPDATE -->
-- [NAME](https://github.com/GITHUB_USERNAME)
+- [NAME](https://github.com/D3vanshUSha4mA)
 
 ### Creator(s)
 
 Honoring the original creator(s) and ideator(s) of this project.
 
 <!-- UPDATE -->
-- [NAME](https://github.com/GITHUB_USERNAME)
+- [NAME](https://github.com/D3vanshUSha4mA)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -136,13 +136,13 @@ Honoring the original creator(s) and ideator(s) of this project.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/cgs-iitkgp/PROJECT_NAME.svg?style=for-the-badge
-[contributors-url]: https://github.com/cgs-iitkgp/PROJECT_NAME/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/cgs-iitkgp/PROJECT_NAME.svg?style=for-the-badge
-[forks-url]: https://github.com/cgs-iitkgp/PROJECT_NAME/network/members
-[stars-shield]: https://img.shields.io/github/stars/cgs-iitkgp/PROJECT_NAME.svg?style=for-the-badge
-[stars-url]: https://github.com/cgs-iitkgp/PROJECT_NAME/stargazers
-[issues-shield]: https://img.shields.io/github/issues/cgs-iitkgp/PROJECT_NAME.svg?style=for-the-badge
-[issues-url]: https://github.com/cgs-iitkgp/PROJECT_NAME/issues
-[license-shield]: https://img.shields.io/github/license/cgs-iitkgp/PROJECT_NAME.svg?style=for-the-badge
-[license-url]: https://github.com/cgs-iitkgp/PROJECT_NAME/blob/master/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/D3vanshUSha4mA/A-shortest-pathfinding-visualization.svg?style=for-the-badge
+[contributors-url]: https://github.com/D3vanshUSha4mA/A-shortest-pathfinding-visualization/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/D3vanshUSha4mA/A-shortest-pathfinding-visualization.svg?style=for-the-badge
+[forks-url]: https://github.com/D3vanshUSha4mA/A-shortest-pathfinding-visualization/network/members
+[stars-shield]: https://img.shields.io/github/stars/D3vanshUSha4mA/A-shortest-pathfinding-visualization.svg?style=for-the-badge
+[stars-url]: https://github.com/D3vanshUSha4mA/A-shortest-pathfinding-visualization/stargazers
+[issues-shield]: https://img.shields.io/github/issues/D3vanshUSha4mA/A-shortest-pathfinding-visualization.svg?style=for-the-badge
+[issues-url]: https://github.com/D3vanshUSha4mA/A-shortest-pathfinding-visualization/issues
+[license-shield]: https://img.shields.io/github/license/D3vanshUSha4mA/A-shortest-pathfinding-visualization.svg?style=for-the-badge
+[license-url]: https://github.com/D3vanshUSha4mA/A-shortest-pathfinding-visualization/blob/master/LICENSE
